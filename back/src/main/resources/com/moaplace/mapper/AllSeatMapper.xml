@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.moaplace.mapper.AllSeatMapper">
+	
+	<!-- 좌석 선택 페이지  상연일정(스케줄)번호로 이미 예매된 좌석 불러오기 =========-->
+	<select id="getBookingSeat" resultType="string">
+		select booking_seat 
+		from all_seat
+		where schedule_num = #{schedule_num}
+		order by booking_seat asc
+	</select>
+
+	<!-- 예매취소 좌석 삭제 -->
+	<delete id="cancleSeat" parameterType="int">
+		delete from all_seat where booking_num=#{booking_num}
+	</delete>
+  
+	<insert id="seatInsert" >
+        INSERT INTO all_seat VALUES(all_seat_seq.nextval, #{schedule_num}, #{show_num},
+          #{booking_seat}, #{booking_num} )
+	</insert>
+
+</mapper>
