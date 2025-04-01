@@ -8,6 +8,7 @@
 *.war
 target/
 .idea
+src/main/resources/mysql.properties
 src/main/resources/oracle.properties
 src/main/resources/mailAuth.properties
 */src/main/webapp/WEB-INF/classes/
